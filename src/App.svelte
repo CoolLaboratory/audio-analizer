@@ -7,6 +7,9 @@
 	let visual = 'sinewave'
 	let src
 	
+	const reader = new FileReader()
+
+
 	
 	let tracks = [
 		{
@@ -38,7 +41,25 @@
 			src: 'https://CoolLaboratory.github.io/assets/kako%20synapantima%20band%20-%20Apagoreuesai.mp3'
 		}
 	]
+
+	/**@param {DragEvent} e*/
+	const handleFileDrop = (e) => {
+		e.preventDefault()
+    e.stopPropagation()
+		const file = e.dataTransfer.files[0]
+
+		/**@param {ProgressEvent<FileReader>} e*/
+		reader.onload = (e) => {
+			src = e.target.result
+		}
+		reader.readAsDataURL(file)
+	}
 </script>
+
+<svelte:window 
+		on:dragover|preventDefault|stopPropagation
+		on:drop="{handleFileDrop}"
+/>
 
 <select bind:value="{visual}">
 	<option value='sinewave'>Sinewave</option>
