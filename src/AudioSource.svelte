@@ -1,14 +1,20 @@
 <script>
 	import {onMount} from 'svelte'
+
+	/**@type {AudioContext}*/
 	export let audioCtx
+	
+	/**@type {string}*/
 	export let src
 	
+	/**@type {MediaElementAudioSourceNode}*/
 	let source
+
+	/**@type {HTMLAudioElement}*/
 	let audioEl
 	
 	onMount(() => {
 		source = audioCtx.createMediaElementSource(audioEl)
-// 		source.connect(audioCtx.destination)
 	})
 </script>
 
