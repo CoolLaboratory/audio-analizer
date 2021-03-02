@@ -19,7 +19,7 @@
 </script>
 
 
-<audio {src} controls bind:this={audioEl} crossorigin="anonymous">
+<audio {src} controls bind:this={audioEl} crossorigin="anonymous" autoplay>
 	<track kind="captions">
 </audio>
 
